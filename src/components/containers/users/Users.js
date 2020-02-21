@@ -10,8 +10,8 @@ function Users({ chanelInfo }) {
     <div className="users">
       <ul>
         {info && info.activeUsers.map((item) => (
-          <li>
-            <a href="#123">{item}</a>
+          <li key={item.id}>
+            <a href="#123">{item.name}</a>
           </li>
         ))}
       </ul>

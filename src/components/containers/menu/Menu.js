@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import messages from '../../utils/messages';
+
 function Menu({ defChanel, selectChanel }) {
   const [chanels] = useState(defChanel);
   const [currentSelectedChanel, setCurrentSelectedChanel] = useState('');
@@ -24,7 +26,17 @@ function Menu({ defChanel, selectChanel }) {
             </li>
           ))
         )}
-        <li><a href="" onClick={() => selectChanel(null)}>Покинуть канал</a></li>
+        <li>
+          <a
+            href="#44"
+            onClick={() => {
+              selectChanel('');
+              setCurrentSelectedChanel('');
+            }}
+          >
+            {messages.EXIT_CHANEL}
+          </a>
+        </li>
       </ul>
     </div>
   );
