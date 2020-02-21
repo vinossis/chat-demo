@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const defChanel = [
-  { chanelId: '1', name: 'csruhub' },
-  { chanelId: '2', name: 'hydramist' },
-  { chanelId: '3', name: 'rubendahouse' },
-  { chanelId: '4', name: 'nurseos' }];
-
-function Menu(props) {
+function Menu({ defChanel, selectChanel }) {
   const [chanels] = useState(defChanel);
   const [currentSelectedChanel, setCurrentSelectedChanel] = useState('');
+
   return (
     <div className="menu">
       <ul>
@@ -21,7 +16,7 @@ function Menu(props) {
                 href="#33"
                 onClick={() => {
                   setCurrentSelectedChanel(chanel.chanelId);
-                  props.selectChanel(chanel.name);
+                  selectChanel(chanel);
                 }}
               >
                 {chanel.name}
@@ -29,13 +24,14 @@ function Menu(props) {
             </li>
           ))
         )}
-        <li><a href="" onClick={() => props.selectChanel(false)}>Покинуть канал</a></li>
+        <li><a href="" onClick={() => selectChanel(null)}>Покинуть канал</a></li>
       </ul>
     </div>
   );
 }
 
 Menu.propTypes = {
+  defChanel: PropTypes.array,
   selectChanel: PropTypes.func,
 };
 
