@@ -40,9 +40,9 @@ body {
     flex: 4;
 }
 
-
-
-
+p {
+    margin-left: 8px;
+}
 
 
 ul {
