@@ -36,9 +36,57 @@ body {
     border-right: solid 2px #302F32;
 }
 
-.chat {
+.chat_wrapper {
     flex: 4;
+    display: flex;
+    flex-direction: column;
 }
+
+.chat_window {
+    flex: 6;
+    border-bottom: solid 1px #555;
+    padding: 8px;
+}
+
+.chat_form {
+    flex: 1;
+    padding: 8px;
+    display: flex;
+}
+
+.chat_form_area {
+    flex: 3;
+}
+
+.chat_form_submit {
+    flex: 1;
+}
+
+.chat_form_submit button {
+    width: 95%;
+    height: 100%;
+    color: white;
+    background-color: #9146FF;
+    border: none;
+    border-radius: 6px;
+    margin-left: 14px;
+    margin-top: 3px;
+
+}
+
+.chat_form_area textarea {
+    width: 100%;
+    height: 100%;
+    background-color: #3A3A3D;
+    color: #C4C4C5;
+    border: none;
+    border-radius: 6px;
+    resize: none;
+    font-size: 16px;
+    padding-left: 8px;
+}
+
+
 
 p {
     margin-left: 8px;
