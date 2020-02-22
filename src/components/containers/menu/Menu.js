@@ -10,6 +10,12 @@ function Menu({ defChanel, selectChanel }) {
   return (
     <div className="menu">
       <ul>
+        <li>
+          <a href="#2">{messages.CREATE_CHANEL}</a>
+        </li>
+      </ul>
+      <div className="line" />
+      <ul>
         {chanels && (
           chanels.map((chanel) => (
             <li key={chanel.chanelId}>
@@ -26,6 +32,7 @@ function Menu({ defChanel, selectChanel }) {
             </li>
           ))
         )}
+        <div className="line" />
         <li>
           <a
             href="#44"
