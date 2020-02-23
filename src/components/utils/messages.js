@@ -4,4 +4,5 @@ export default {
   CREATE_CHANEL: 'Создать канал',
   SEND_MESSAGE: 'Отправить',
   SELECT_CHANEL: 'Выберите канал',
+  AUTH: 'Авторизоваться',
 };
