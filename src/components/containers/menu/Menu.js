@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import messages from '../../utils/messages';
+import { useAuth } from '../../../hooks/auth.hooks';
 
 function Menu({ defChanel, selectChanel }) {
   const [chanels] = useState(defChanel);
   const [currentSelectedChanel, setCurrentSelectedChanel] = useState('');
+  const { isAuth } = useAuth();
 
   return (
     <div className="menu">
-      <ul>
-        <li>
-          <a href="#2">{messages.CREATE_CHANEL}</a>
-        </li>
-      </ul>
+      {
+        isAuth && (
+          <ul>
+            <li>
+              <a href="#2">{messages.CREATE_CHANEL}</a>
+            </li>
+          </ul>
+        )
+      }
       <div className="line" />
       <ul>
         {chanels && (
