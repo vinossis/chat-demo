@@ -8,11 +8,12 @@ function Menu({ selectChanel, defChanel, setDefChanel }) {
   const [chanels, setChanels] = useState(defChanel);
   const [currentSelectedChanel, setCurrentSelectedChanel] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
-  const { isAuth } = useAuth();
+  const { isAuth, logout } = useAuth();
 
   useEffect(() => {
     setChanels(defChanel);
   }, [setDefChanel, defChanel]);
+
   return (
     <div className="menu">
       {showAddModal
@@ -65,6 +66,19 @@ function Menu({ selectChanel, defChanel, setDefChanel }) {
             {messages.EXIT_CHANEL}
           </a>
         </li>
+        <div className="line" />
+
+        {isAuth && (
+          <li>
+            <a
+              href="#44"
+              onClick={() => logout()}
+            >
+              {messages.EXIT_ACCOUNT}
+            </a>
+          </li>
+        )}
+
       </ul>
     </div>
   );
