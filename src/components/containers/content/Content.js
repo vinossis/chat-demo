@@ -19,10 +19,41 @@ const users = [
   { id: 13, name: 'Anton' }];
 
 const defChanel = [
-  { chanelId: 1, name: 'csruhub', activeUsers: [users[0], users[1], users[2], users[6]] },
-  { chanelId: 2, name: 'hydramist', activeUsers: [users[3], users[4], users[5]] },
-  { chanelId: 3, name: 'rubendahouse', activeUsers: [users[7], users[8], users[9], users[10], users[11]] },
-  { chanelId: 4, name: 'nurseos', activeUsers: [] }];
+  {
+    chanelId: 1,
+    name: 'csruhub',
+    activeUsers: [users[0], users[1], users[2], users[6]],
+    lastMessages: [
+      { user: users[0].name, message: 'hello!' },
+      { user: users[1].name, message: 'hello!' },
+      { user: users[2].name, message: 'eee' },
+      { user: users[6].name, message: 'qweqw' },
+    ],
+  },
+  {
+    chanelId: 2,
+    name: 'hydramist',
+    activeUsers: [users[3], users[4], users[5]],
+    lastMessages: [
+
+    ],
+  },
+  {
+    chanelId: 3,
+    name: 'rubendahouse',
+    activeUsers: [users[7], users[8], users[9], users[10], users[11]],
+    lastMessages: [
+
+    ],
+  },
+  {
+    chanelId: 4,
+    name: 'nurseos',
+    activeUsers: [],
+    lastMessages: [
+
+    ],
+  }];
 
 function Content() {
   const [allChanels, setAllChanels] = useState(defChanel);

@@ -13,7 +13,13 @@ function Chat({ chanelInfo }) {
     return (
       <div className="chat_wrapper">
         <div className="chat_window">
-          123
+          {chanelInfo.lastMessages && chanelInfo.lastMessages.map((item, index) => (
+            <div key={index} className="line">
+              {item.user}
+              : {' '}
+              {item.message}
+            </div>
+          ))}
         </div>
         <div className="chat_form">
           <div className="chat_form_area">

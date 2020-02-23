@@ -50,8 +50,12 @@ body {
     flex: 6;
     border-bottom: solid 1px #555;
     padding: 8px;
+    display: flex;
+    flex-direction: column;
 }
-
+.chat_window div.line{
+    width: 100%;
+}
 .chat_form {
     flex: 1;
     padding: 8px;
