@@ -18,6 +18,7 @@ function Auth({ closeModal }) {
     login(localUserName);
     setIsAuth(true);
     closeModal(false);
+    window.location.reload();
   };
   return (
     <div className="auth">
