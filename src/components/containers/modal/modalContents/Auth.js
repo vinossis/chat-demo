@@ -21,7 +21,7 @@ function Auth({ closeModal }) {
   };
   return (
     <div className="auth">
-      <p>Минимальное количестко символов в нике 2:</p>
+      <p>{messages.MIN_AUTH_NAME}</p>
       <input onChange={changeUserName} type="text" value={localUserName} />
       <button disabled={isBlockButton} onClick={submitAuthParam}>{messages.AUTH}</button>
     </div>

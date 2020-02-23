@@ -5,4 +5,5 @@ export default {
   SEND_MESSAGE: 'Отправить',
   SELECT_CHANEL: 'Выберите канал',
   AUTH: 'Авторизоваться',
+  MIN_AUTH_NAME: 'Минимальное количестко символов в нике 2:',
 };
