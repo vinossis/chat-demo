@@ -10,7 +10,7 @@ function Wrapper() {
 
   return (
     <div className="wrapper">
-      {!isAuth && <Modal title={modalTitle} />}
+      {!isAuth && <Modal title={modalTitle} type="login" />}
       <Header />
       <Content />
     </div>

@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Auth from './modalContents/Auth';
+import AddNewChanel from './modalContents/AddNewChanel';
 
-function Modal({ title }) {
+function Modal({
+  title, type, setShowAddModal, chanels, setDefChanel,
+}) {
   const [isModal, setIsModal] = useState(true);
   const [mdTitle] = useState(title);
 
@@ -10,6 +13,9 @@ function Modal({ title }) {
   const modal = document.getElementById('myModal');
   const onModalHendler = () => {
     setIsModal(!isModal);
+    if (type === 'add') {
+      setShowAddModal(false);
+    }
   };
 
   window.onclick = (event) => {
@@ -28,7 +34,8 @@ function Modal({ title }) {
           </div>
           <div className="line" />
           <div className="modal-body">
-            <Auth closeModal={setIsModal} />
+            {type === 'login' ? <Auth closeModal={setIsModal} /> : ''}
+            {type === 'add' ? <AddNewChanel chanels={chanels} setDefChanel={setDefChanel} setShowAddModal={setShowAddModal} /> : ''}
           </div>
         </div>
 
@@ -38,8 +45,16 @@ function Modal({ title }) {
 }
 
 Modal.propTypes = {
+  chanels: PropTypes.array,
+  setDefChanel: PropTypes.func,
+  setShowAddModal: PropTypes.func,
   title: PropTypes.string,
+  type: PropTypes.string,
 };
-
+Modal.defaultProps = {
+  setShowAddModal() {
+    return null;
+  },
+};
 
 export default Modal;

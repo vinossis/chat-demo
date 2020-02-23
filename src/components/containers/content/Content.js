@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Menu from '../menu/Menu';
 import Chat from '../chat/Chat';
 import Users from '../users/Users';
@@ -19,18 +19,22 @@ const users = [
   { id: 13, name: 'Anton' }];
 
 const defChanel = [
-  { chanelId: '1', name: 'csruhub', activeUsers: [users[0], users[1], users[2], users[6]] },
-  { chanelId: '2', name: 'hydramist', activeUsers: [users[3], users[4], users[5]] },
-  { chanelId: '3', name: 'rubendahouse', activeUsers: [users[7], users[8], users[9], users[10], users[11]] },
-  { chanelId: '4', name: 'nurseos', activeUsers: [] }];
+  { chanelId: 1, name: 'csruhub', activeUsers: [users[0], users[1], users[2], users[6]] },
+  { chanelId: 2, name: 'hydramist', activeUsers: [users[3], users[4], users[5]] },
+  { chanelId: 3, name: 'rubendahouse', activeUsers: [users[7], users[8], users[9], users[10], users[11]] },
+  { chanelId: 4, name: 'nurseos', activeUsers: [] }];
 
 function Content() {
-  const [allChanels] = useState(defChanel);
+  const [allChanels, setAllChanels] = useState(defChanel);
   const [selectedChanel, setSelectedChanel] = useState(null);
+
+  useEffect(() => {
+    setAllChanels(allChanels);
+  }, [allChanels]);
 
   return (
     <div className="content">
-      <Menu defChanel={allChanels} selectChanel={setSelectedChanel} />
+      <Menu defChanel={allChanels} selectChanel={setSelectedChanel} setDefChanel={setAllChanels} />
       {selectedChanel && (
         <Users chanelInfo={selectedChanel} />
       )}

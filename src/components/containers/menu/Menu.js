@@ -1,20 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import messages from '../../utils/messages';
 import { useAuth } from '../../../hooks/auth.hooks';
+import Modal from '../modal/Modal';
 
-function Menu({ defChanel, selectChanel }) {
-  const [chanels] = useState(defChanel);
+function Menu({ selectChanel, defChanel, setDefChanel }) {
+  const [chanels, setChanels] = useState(defChanel);
   const [currentSelectedChanel, setCurrentSelectedChanel] = useState('');
+  const [showAddModal, setShowAddModal] = useState(false);
   const { isAuth } = useAuth();
 
+  useEffect(() => {
+    setChanels(defChanel);
+  }, [setDefChanel, defChanel]);
   return (
     <div className="menu">
+      {showAddModal
+        ? (
+          <Modal
+            chanels={chanels}
+            setDefChanel={setDefChanel}
+            setShowAddModal={setShowAddModal}
+            title={messages.ADD_NEW_CHANEL}
+            type="add"
+          />
+        )
+        : ''}
       {
         isAuth && (
           <ul>
             <li>
-              <a href="#2">{messages.CREATE_CHANEL}</a>
+              <a href="#2" onClick={() => setShowAddModal(true)}>{messages.CREATE_CHANEL}</a>
             </li>
           </ul>
         )
@@ -57,6 +73,7 @@ function Menu({ defChanel, selectChanel }) {
 Menu.propTypes = {
   defChanel: PropTypes.array,
   selectChanel: PropTypes.func,
+  setDefChanel: PropTypes.func,
 };
 
 export default Menu;
