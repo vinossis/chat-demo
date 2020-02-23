@@ -3,4 +3,5 @@ export default {
   USER_LIST_EMPTY: 'Список пуст',
   CREATE_CHANEL: 'Создать канал',
   SEND_MESSAGE: 'Отправить',
+  SELECT_CHANEL: 'Выберите канал',
 };

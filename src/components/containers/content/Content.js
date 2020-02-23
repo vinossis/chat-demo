@@ -34,7 +34,7 @@ function Content() {
       {selectedChanel && (
         <Users chanelInfo={selectedChanel} />
       )}
-      <Chat />
+      <Chat chanelInfo={selectedChanel} />
     </div>
   );
 }
