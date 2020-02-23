@@ -6,10 +6,12 @@ import { useAuth } from '../../../../hooks/auth.hooks';
 function Auth({ closeModal }) {
   const [localUserName, setLocalUserName] = useState('');
   const { login, setIsAuth } = useAuth();
+  const [isBlockButton, setIsBlockButton] = useState(true);
 
   const changeUserName = (event) => {
     const eventValue = event.target.value;
-    setLocalUserName(eventValue);
+    setLocalUserName(eventValue.trim());
+    setIsBlockButton(eventValue.length < 2);
   };
 
   const submitAuthParam = () => {
@@ -19,8 +21,9 @@ function Auth({ closeModal }) {
   };
   return (
     <div className="auth">
+      <p>Минимальное количестко символов в нике 2:</p>
       <input onChange={changeUserName} type="text" value={localUserName} />
-      <button onClick={submitAuthParam}>{messages.AUTH}</button>
+      <button disabled={isBlockButton} onClick={submitAuthParam}>{messages.AUTH}</button>
     </div>
   );
 }
