@@ -15,7 +15,7 @@ function Chat({ chanelInfo }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newObj = Object.assign(info, { lastMessages: [...info.lastMessages, { user: name, message: inputText }] });
+    const newObj = Object.assign(info, { lastMessages: [...info.lastMessages, { user: name || 'Гость', message: inputText }] });
     setInfo(newObj);
     setInputText('');
   };
