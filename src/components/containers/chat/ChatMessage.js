@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ChatMessage({ message, user }) {
+function ChatMessage({ message }) {
   return (
     <p style={{ marginBottom: 0 }}>
       {message.user}
@@ -11,7 +11,9 @@ function ChatMessage({ message, user }) {
   );
 }
 
-ChatMessage.propTypes = {};
+ChatMessage.propTypes = {
+  message: PropTypes.object,
+};
 ChatMessage.defaultProps = {};
 
 export default ChatMessage;

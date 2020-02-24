@@ -11,7 +11,11 @@ function ChatMessageHistory({ messages }) {
 
   return (
     <ul>
-      {localMessage.lastMessages.map((message, index) => <li key={index}><ChatMessage message={message} /></li>)}
+      {localMessage.lastMessages
+        .slice(localMessage.lastMessages.length - 20, localMessage.lastMessages.length)
+        .map((message, index) => (
+          <li key={index}><ChatMessage message={message} /></li>
+        ))}
     </ul>
   );
 }
