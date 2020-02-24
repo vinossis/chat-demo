@@ -33,7 +33,7 @@ function Chat({ chanelInfo }) {
         <form onSubmit={handleSubmit}>
           <div className="chat_form">
             <div className="chat_form_area">
-              <textarea onChange={(e) => setInputText(e.target.value)} type="text" value={inputText} />
+              <input onChange={(e) => setInputText(e.target.value)} type="text" value={inputText} />
             </div>
             <div className="chat_form_submit">
               <button>{messages.SEND_MESSAGE}</button>
