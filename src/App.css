@@ -239,3 +239,33 @@ li a:hover {
     padding-left: 8px;
     margin: 10px auto;
 }
+
+
+nav, scroll-container {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+nav {
+    width: 339px;
+    padding: 5px;
+    border: 1px solid black;
+}
+scroll-container {
+    display: block;
+    width: 550px;
+    height: 420px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+scroll-container ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 540px;
+    background-color: #1F1E23;
+}
+scroll-container ul li {
+    text-align: left;
+}

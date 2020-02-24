@@ -1,34 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import messages from '../../utils/messages';
+import ChatMessageHistory from './ChatMessageHistory';
+import { useAuth } from '../../../hooks/auth.hooks';
 
 function Chat({ chanelInfo }) {
   const [info, setInfo] = useState(chanelInfo);
+  const [inputText, setInputText] = useState('');
+  const { name } = useAuth();
 
   useEffect(() => {
     setInfo(chanelInfo);
   }, [chanelInfo]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newObj = Object.assign(info, { lastMessages: [...info.lastMessages, { user: name, message: inputText }] });
+    setInfo(newObj);
+    setInputText('');
+  };
+
   if (info) {
     return (
       <div className="chat_wrapper">
+
         <div className="chat_window">
-          {chanelInfo.lastMessages && chanelInfo.lastMessages.map((item, index) => (
-            <div key={index} className="line">
-              {item.user}
-              : {' '}
-              {item.message}
+          <scroll-container>
+            <ChatMessageHistory messages={info} />
+          </scroll-container>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <div className="chat_form">
+            <div className="chat_form_area">
+              <textarea onChange={(e) => setInputText(e.target.value)} type="text" value={inputText} />
             </div>
-          ))}
-        </div>
-        <div className="chat_form">
-          <div className="chat_form_area">
-            <textarea id="" name="" />
+            <div className="chat_form_submit">
+              <button>{messages.SEND_MESSAGE}</button>
+            </div>
           </div>
-          <div className="chat_form_submit">
-            <button>{messages.SEND_MESSAGE}</button>
-          </div>
-        </div>
+        </form>
       </div>
     );
   }
