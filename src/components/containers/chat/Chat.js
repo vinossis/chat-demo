@@ -7,6 +7,7 @@ import { useAuth } from '../../../hooks/auth.hooks';
 function Chat({ chanelInfo }) {
   const [info, setInfo] = useState(chanelInfo);
   const [inputText, setInputText] = useState('');
+  const [slowMode, setSlowMode] = useState(false);
   const { name } = useAuth();
 
   useEffect(() => {
@@ -15,9 +16,13 @@ function Chat({ chanelInfo }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSlowMode(true);
     const newObj = Object.assign(info, { lastMessages: [...info.lastMessages, { user: name || 'Гость', message: inputText }] });
     setInfo(newObj);
     setInputText('');
+    setTimeout(() => {
+      setSlowMode(false);
+    }, 1000);
   };
 
   if (info) {
@@ -36,7 +41,7 @@ function Chat({ chanelInfo }) {
               <input onChange={(e) => setInputText(e.target.value)} type="text" value={inputText} />
             </div>
             <div className="chat_form_submit">
-              <button>{messages.SEND_MESSAGE}</button>
+              <button disabled={slowMode}>{messages.SEND_MESSAGE}</button>
             </div>
           </div>
         </form>
