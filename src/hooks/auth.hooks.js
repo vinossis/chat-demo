@@ -32,6 +32,7 @@ export const useAuth = () => {
     setName(null);
     setIsAuth(false);
     localStorage.removeItem(storageName);
+    window.location.reload();
   }, []);
 
   useEffect(() => {
