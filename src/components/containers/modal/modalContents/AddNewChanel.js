@@ -24,6 +24,7 @@ function AddNewChanel({ chanels, setDefChanel, setShowAddModal }) {
         chanelId: chanels.length + 1,
         name: newChanelName,
         activeUsers: [],
+        lastMessages: [],
       }];
       setLocalChanels(localChanel);
       setDefChanel(localChanel);
